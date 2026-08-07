@@ -1,0 +1,158 @@
+/* Catppuccin Mocha - coherente con waybar */
+:root {
+  --cc-bg: rgba(30, 30, 46, 0.92);              /* base */
+  --noti-border-color: rgba(49, 50, 68, 0.9);    /* surface0 */
+  --noti-bg: 30, 30, 46;                         /* base (rgb triplet) */
+  --noti-bg-alpha: 0.92;
+  --noti-bg-darker: rgb(17, 17, 27);             /* crust */
+  --noti-bg-hover: rgb(49, 50, 68);              /* surface0 */
+  --noti-bg-focus: rgba(69, 71, 90, 0.6);        /* surface1 */
+  --noti-close-bg: rgb(69, 71, 90);              /* surface1 */
+  --noti-close-bg-hover: rgb(243, 139, 168);     /* red */
+  --text-color: rgb(205, 214, 244);              /* text */
+  --text-color-disabled: rgb(108, 112, 134);     /* overlay0 */
+  --bg-selected: rgb(203, 166, 247);             /* mauve */
+  --notification-icon-size: 56px;
+  --notification-app-icon-size: 20px;
+  --notification-group-icon-size: 28px;
+  --border: 1px solid rgba(69, 71, 90, 0.7);
+  --border-radius: 16px;
+  --notification-shadow: 0 4px 16px 2px rgba(17, 17, 27, 0.5);
+  --font-size-body: 13px;
+  --font-size-summary: 14px;
+}
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "JetBrainsMono Nerd Font Mono", sans-serif;
+}
+
+notificationwindow,
+blankwindow,
+.blank-window,
+.floating-notifications {
+  background: transparent;
+}
+
+/* Popups (top-right) */
+.floating-notifications .notification {
+  box-shadow: var(--notification-shadow);
+}
+
+/* Control Center panel */
+.control-center {
+  background: var(--cc-bg);
+  color: var(--text-color);
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(88, 91, 112, 0.5); /* surface2 */
+}
+
+.control-center .control-center-list {
+  background: transparent;
+}
+
+.control-center .control-center-list-placeholder {
+  color: rgb(166, 173, 200); /* subtext0 */
+  opacity: 0.6;
+}
+
+/* Notification card */
+.notification-row .notification-background .notification {
+  border-left: 3px solid rgb(180, 190, 254); /* lavender = normal */
+}
+
+.notification-row .notification-background .notification.low {
+  border-left-color: rgb(108, 112, 134); /* overlay0 */
+}
+
+.notification-row .notification-background .notification.critical {
+  border-left-color: rgb(243, 139, 168); /* red */
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary {
+  color: rgb(205, 214, 244); /* text */
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
+  color: rgb(166, 173, 200); /* subtext0 */
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .time {
+  color: rgb(127, 132, 156); /* overlay1 */
+}
+
+.notification-action,
+.notification-default-action {
+  color: var(--text-color);
+}
+
+.notification-action > button {
+  background: rgb(49, 50, 68); /* surface0 */
+  color: rgb(205, 214, 244);
+  border-radius: 10px;
+}
+
+.notification-action > button:hover {
+  background: rgb(203, 166, 247); /* mauve */
+  color: rgb(30, 30, 46);
+}
+
+.close-button {
+  background: var(--noti-close-bg);
+  color: rgb(205, 214, 244);
+}
+
+.close-button:hover {
+  background: var(--noti-close-bg-hover);
+  color: rgb(30, 30, 46);
+}
+
+/* Title widget */
+.widget-title > label {
+  color: rgb(203, 166, 247); /* mauve */
+  font-weight: 700;
+}
+
+.widget-title > button {
+  background: rgb(49, 50, 68);
+  color: rgb(205, 214, 244);
+  border-radius: 10px;
+}
+
+.widget-title > button:hover {
+  background: rgb(243, 139, 168); /* red */
+  color: rgb(30, 30, 46);
+}
+
+/* DND widget */
+.widget-dnd label {
+  color: rgb(205, 214, 244);
+}
+
+.widget-dnd switch {
+  background: rgb(69, 71, 90); /* surface1 */
+  border-radius: 999px;
+}
+
+.widget-dnd switch:checked {
+  background: rgb(166, 227, 161); /* green */
+}
+
+.widget-dnd switch slider {
+  background: rgb(205, 214, 244);
+  border-radius: 999px;
+}
+
+/* Scrollbar */
+scrollbar {
+  background: transparent;
+}
+
+scrollbar slider {
+  background: rgb(69, 71, 90); /* surface1 */
+  border-radius: 999px;
+  min-width: 6px;
+}
+
+scrollbar slider:hover {
+  background: rgb(203, 166, 247); /* mauve */
+}

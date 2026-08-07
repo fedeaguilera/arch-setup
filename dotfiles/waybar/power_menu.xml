@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkMenu" id="menu">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkMenuItem" id="shutdown">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label" translatable="yes">  Apagar</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="reboot">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label" translatable="yes">  Reiniciar</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="suspend">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label" translatable="yes">  Suspender</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="logout">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label" translatable="yes">  Cerrar sesión</property>
+      </object>
+    </child>
+  </object>
+</interface>

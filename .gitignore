@@ -1,0 +1,18 @@
+# Nada de VPN: certificados, claves, configs de conexion.
+vpn/
+*.ovpn
+*.ovpn.bak
+*.key
+*.crt
+*.pem
+*.p12
+*.pfx
+
+# Logs y estado local del instalador.
+*.log
+arch-setup-install.log
+
+# Basura de editores/SO.
+.DS_Store
+*.swp
+*~

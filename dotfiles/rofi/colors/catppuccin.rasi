@@ -1,0 +1,15 @@
+/**
+ *
+ * Catppuccin Mocha
+ * Paleta oficial, coherente con waybar/swaync
+ *
+ **/
+
+* {
+    background:     #1E1E2EFF; /* base */
+    background-alt: #313244FF; /* surface0 */
+    foreground:     #CDD6F4FF; /* text */
+    selected:       #CBA6F7FF; /* mauve */
+    active:         #A6E3A1FF; /* green */
+    urgent:         #F38BA8FF; /* red */
+}

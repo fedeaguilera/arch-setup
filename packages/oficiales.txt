@@ -1,0 +1,125 @@
+# Paquetes oficiales (repos Arch), instalados explicitamente.
+# Generado desde: pacman -Qqen
+# Editable a mano: agregar/sacar lineas, se instalan con pacman -S --needed.
+
+# --- base ---
+# sistema base, kernel, bootloader, btrfs/snapshots
+amd-ucode
+base
+base-devel
+btrfs-progs
+efibootmgr
+fastfetch
+git
+grub
+grub-btrfs
+htop
+inotify-tools
+jq
+linux
+linux-firmware
+linux-headers
+linux-lts
+linux-lts-headers
+mkinitcpio
+nano
+openssh
+os-prober
+plymouth
+reflector
+snap-pac
+snapper
+sudo
+vim
+zram-generator
+zsh
+
+# --- graficos ---
+# GPU hibrida: AMD Vega (iGPU) + NVIDIA RTX 3050 (dGPU)
+egl-wayland
+lib32-mesa
+lib32-nvidia-utils
+lib32-vulkan-icd-loader
+lib32-vulkan-radeon
+mesa
+mesa-utils
+nvidia-open-dkms
+nvidia-prime
+nvidia-utils
+vulkan-icd-loader
+vulkan-radeon
+vulkan-tools
+
+# --- hyprland ---
+# escritorio wayland: compositor, barra, launcher, portals, fuentes
+awww
+brightnessctl
+cliphist
+grim
+hypridle
+hyprland
+hyprlock
+hyprpaper
+hyprpolkitagent
+kitty
+kwin                 # compositor del greeter de SDDM (sddm-astronaut-theme), no de la sesion
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+nwg-look
+papirus-icon-theme
+playerctl
+qt5-wayland
+qt6-multimedia-ffmpeg
+qt6-virtualkeyboard
+qt6-wayland
+rofi
+sddm
+slurp
+swappy
+swaync
+swayosd
+ttf-jetbrains-mono-nerd
+waybar
+wev
+wl-clipboard
+xdg-desktop-portal-gtk
+xdg-desktop-portal-hyprland
+
+# --- audio ---
+pavucontrol
+pipewire-pulse
+
+# --- gaming ---
+gamemode
+goverlay
+lib32-gamemode
+lib32-mangohud
+lutris
+mangohud
+steam
+
+# --- dev ---
+nodejs
+npm
+yazi
+
+# --- apps ---
+# aplicaciones de usuario + red/bluetooth
+blueman
+bluez
+bluez-utils
+discord
+firefox
+freerdp
+iwd
+nautilus
+network-manager-applet
+networkmanager
+networkmanager-openvpn
+openvpn
+power-profiles-daemon
+remmina
+rtkit
+wireless_tools
+wpa_supplicant

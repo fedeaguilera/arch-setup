@@ -1,0 +1,19 @@
+# Paquetes AUR, instalados explicitamente.
+# Generado desde: pacman -Qqem
+#
+# NOTA: "paru" NO se instala desde esta lista. Se compila desde fuente en
+# modules/01-aur.sh (nunca paru-bin: se rompe con actualizaciones de pacman
+# por el ABI de libalpm.so). Esta lista se instala DESPUES de tener paru.
+
+# --- theming ---
+catppuccin-gtk-theme-mocha
+catppuccin-mocha-grub-theme-git
+sddm-astronaut-theme
+
+# --- gaming ---
+heroic-games-launcher-bin
+protonup-qt
+
+# --- apps ---
+onlyoffice-bin
+spotify

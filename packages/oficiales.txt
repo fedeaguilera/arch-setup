@@ -125,5 +125,6 @@ openvpn
 power-profiles-daemon
 remmina
 rtkit
+thunderbird
 wireless_tools
 wpa_supplicant

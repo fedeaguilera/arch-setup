@@ -29,6 +29,7 @@ MODULES=(
     09-servicios
     10-hibernate
     11-neovim
+    12-thunderbird
 )
 
 ONLY=""

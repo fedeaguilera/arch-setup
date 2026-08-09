@@ -28,6 +28,7 @@ MODULES=(
     08-dotfiles
     09-servicios
     10-hibernate
+    11-neovim
 )
 
 ONLY=""

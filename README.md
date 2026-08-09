@@ -19,6 +19,7 @@ tengo que volver a diagnosticar.
 | **Root**     | btrfs, subvolúmenes `@ @home @log @pkg @.snapshots`, zstd |
 | **Boot**     | GRUB, kernels `linux` + `linux-lts` |
 | **Escritorio** | Hyprland + SDDM (sddm-astronaut-theme) |
+| **Editor**   | Neovim + LazyVim, Catppuccin Mocha transparente |
 
 ## Por qué existe esto
 
@@ -51,10 +52,11 @@ de que no se repiten si algún día toca resolverlos a mano de nuevo.
 arch-setup/
 ├── INSTALL.md            # particionado, BIOS, archinstall — todo lo manual
 ├── install.sh             # orquestador: --only <modulo>, --yes, --list
-├── modules/                # 00-base ... 10-hibernate, uno por dominio
-├── dotfiles/                 # hypr/ waybar/ kitty/ rofi/ swaync/ .zshrc
-├── packages/                   # oficiales.txt (104) + aur.txt (8), categorizados
-└── notas-gaming.md               # PRIME offload, launch options por juego
+├── modules/                # 00-base ... 11-neovim, uno por dominio
+├── dotfiles/                 # hypr/ waybar/ kitty/ rofi/ swaync/ nvim/ .zshrc
+├── packages/                   # oficiales.txt (108) + aur.txt (8), categorizados
+├── notas-gaming.md               # PRIME offload, launch options por juego
+└── notas-neovim.md                # LazyVim viniendo de VS Code
 ```
 
 ## Uso
@@ -94,6 +96,7 @@ El orden importa: cada uno asume que el anterior ya corrió.
 | 08 | `dotfiles` | copia `dotfiles/` a `~/.config`, `~/.local/bin`, `~/.zshrc` |
 | 09 | `servicios` | habilita NetworkManager, bluetooth, sddm, rtkit, upower, etc. |
 | 10 | `hibernate` | swapfile en subvolumen propio, hook `resume`, servicios nvidia de sleep |
+| 11 | `neovim` | LazyVim (Python/TS/React), Catppuccin Mocha, bootstrap headless de plugins/LSP |
 
 ## Paquetes
 
@@ -108,9 +111,9 @@ alcanza para que el módulo correspondiente la instale.
 | hyprland | 33 | 3 (temas) |
 | audio | 2 | — |
 | gaming | 7 | 2 |
-| dev | 3 | — |
+| dev | 7 | — |
 | apps | 17 | 2 |
-| **total** | **104** | **8** |
+| **total** | **108** | **8** |
 
 ## Lo que queda manual
 
@@ -122,6 +125,7 @@ alcanza para que el módulo correspondiente la instale.
 - Proton-GE vía ProtonUp-Qt (Steam → Configuración → Compatibilidad).
 - Restaurar `~/vpn/` — a propósito no viaja en este repo (ver `.gitignore`).
 - `notas-gaming.md` para las opciones de lanzamiento por juego/launcher.
+- `notas-neovim.md` para arrancar con LazyVim viniendo de VS Code.
 
 ---
 

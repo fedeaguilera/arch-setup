@@ -100,8 +100,12 @@ mangohud
 steam
 
 # --- dev ---
+fd
+lazygit
+neovim
 nodejs
 npm
+ripgrep
 yazi
 
 # --- apps ---

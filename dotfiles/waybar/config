@@ -30,7 +30,15 @@
     "hyprland/workspaces": {
         "disable-scroll": false,
         "all-outputs": true,
-        "format": "{name}",
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "default": ""
+        },
         "persistent-workspaces": {
             "*": 5
         }
@@ -134,13 +142,6 @@
     "custom/power": {
         "format": "⏻",
         "tooltip": false,
-        "menu": "on-click",
-        "menu-file": "$HOME/.config/waybar/power_menu.xml",
-        "menu-actions": {
-            "shutdown": "systemctl poweroff",
-            "reboot": "systemctl reboot",
-            "suspend": "systemctl suspend",
-            "logout": "hyprctl dispatch exit"
-        }
+        "on-click": "~/.local/bin/system-power-menu.sh"
     }
 }

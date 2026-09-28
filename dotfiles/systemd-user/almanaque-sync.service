@@ -1,0 +1,7 @@
+[Unit]
+Description=Almanaque: descargar calendarios .ics (Google Calendar)
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 %h/.local/bin/almanaque-sync.py

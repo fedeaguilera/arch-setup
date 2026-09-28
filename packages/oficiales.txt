@@ -56,6 +56,7 @@ awww
 brightnessctl
 cliphist
 grim
+gtk4-layer-shell       # almanaque.py (popup del reloj de waybar)
 hypridle
 hyprland
 hyprlock
@@ -69,6 +70,8 @@ noto-fonts-emoji
 nwg-look
 papirus-icon-theme
 playerctl
+python-gobject         # almanaque.py
+python-icalendar       # almanaque.py: eventos de Google Calendar
 qt5-wayland
 qt6-multimedia-ffmpeg
 qt6-virtualkeyboard

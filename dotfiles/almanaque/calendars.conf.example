@@ -1,0 +1,34 @@
+# Calendarios del almanaque (popup del reloj de Waybar).
+#
+# Cada seccion [Nombre] es un calendario. Campos:
+#   url     = direccion .ics (obligatoria)
+#   color   = mauve, blue, green, peach, red, yellow, teal, pink, sky, lavender...
+#             (paleta Catppuccin Mocha)
+#   enabled = false  para apagarlo sin borrarlo
+#   holidays = true  pinta el numero del dia (para calendarios de feriados)
+#
+# ── Como agregar tu Google Calendar (Gmail) ──────────────────────────────
+#  1. Abri https://calendar.google.com en el navegador.
+#  2. Engranaje ⚙ → Configuracion.
+#  3. En la columna izquierda, "Configuracion de mis calendarios" → clic en tu
+#     calendario (el que tiene tu nombre).
+#  4. Baja hasta "Integrar el calendario" → "Direccion secreta en formato
+#     iCal" → boton de copiar.
+#  5. Pegala abajo en la seccion [Gmail], sacale el "#" a las lineas
+#     y guarda. En menos de 15 min aparecen los eventos (o corre
+#     ~/.local/bin/almanaque-sync.py para traerlos ya).
+#
+#  Esa URL es SECRETA: cualquiera con ella ve tu agenda. Este archivo no se
+#  sube a arch-setup. Si alguna vez se filtra, en esa misma pantalla de
+#  Google la podes "Restablecer".
+#
+#  Repeti la seccion para otros calendarios (trabajo, cumpleaños, etc.).
+
+# [Gmail]
+# url = PEGAR_ACA_LA_DIRECCION_SECRETA_ICAL
+# color = mauve
+
+[Feriados]
+url = https://calendar.google.com/calendar/ical/es.ar%23holiday%40group.v.calendar.google.com/public/basic.ics
+color = peach
+holidays = true

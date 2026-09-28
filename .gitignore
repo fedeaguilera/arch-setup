@@ -16,3 +16,7 @@ arch-setup-install.log
 .DS_Store
 *.swp
 *~
+
+# Worktrees de Claude Code.
+.claude/
+__pycache__/

@@ -53,9 +53,10 @@ arch-setup/
 ├── INSTALL.md            # particionado, BIOS, archinstall — todo lo manual
 ├── install.sh             # orquestador: --only <modulo>, --yes, --list
 ├── modules/                # 00-base ... 12-thunderbird, uno por dominio
-├── dotfiles/                 # hypr/ waybar/ kitty/ rofi/ swaync/ nvim/ thunderbird/ .zshrc
-├── packages/                   # oficiales.txt (109) + aur.txt (8), categorizados
+├── dotfiles/                 # hypr/ waybar/ kitty/ rofi/ swaync/ nvim/ thunderbird/ almanaque/ .zshrc
+├── packages/                   # oficiales.txt (112) + aur.txt (9), categorizados
 ├── notas-gaming.md               # PRIME offload, launch options por juego
+├── notas-almanaque.md             # popup calendario de waybar + Google Calendar
 ├── notas-neovim.md                # LazyVim viniendo de VS Code
 └── notas-thunderbird.md            # OAuth2, app password de Yahoo, tema
 ```
@@ -94,7 +95,7 @@ El orden importa: cada uno asume que el anterior ya corrió.
 | 05 | `snapper` | reusa el subvolumen `@.snapshots`, `snap-pac`, `grub-btrfs` |
 | 06 | `grub-theme` | catppuccin-mocha, resolución detectada con `hyprctl` |
 | 07 | `apps` | gaming, dev, apps de usuario |
-| 08 | `dotfiles` | copia `dotfiles/` a `~/.config`, `~/.local/bin`, `~/.zshrc` |
+| 08 | `dotfiles` | copia `dotfiles/` a `~/.config`, `~/.local/bin`, `~/.zshrc`; timer del almanaque |
 | 09 | `servicios` | habilita NetworkManager, bluetooth, sddm, rtkit, upower, etc. |
 | 10 | `hibernate` | swapfile en subvolumen propio, hook `resume`, servicios nvidia de sleep |
 | 11 | `neovim` | LazyVim (Python/TS/React), Catppuccin Mocha, bootstrap headless de plugins/LSP |
@@ -127,6 +128,7 @@ alcanza para que el módulo correspondiente la instale.
 - Proton-GE vía ProtonUp-Qt (Steam → Configuración → Compatibilidad).
 - Restaurar `~/vpn/` — a propósito no viaja en este repo (ver `.gitignore`).
 - `notas-gaming.md` para las opciones de lanzamiento por juego/launcher.
+- `notas-almanaque.md` para conectar tu Google Calendar al popup del reloj.
 - `notas-neovim.md` para arrancar con LazyVim viniendo de VS Code.
 - `notas-thunderbird.md` para configurar las cuentas (OAuth2 de
   Gmail/Outlook, contraseña de aplicación de Yahoo) y el resto de ajustes.

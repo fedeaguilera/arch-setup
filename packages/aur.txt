@@ -17,3 +17,4 @@ protonup-qt
 # --- apps ---
 onlyoffice-bin
 spotify
+python-recurring-ical-events   # almanaque.py: expande eventos repetitivos

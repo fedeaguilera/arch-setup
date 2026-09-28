@@ -15,8 +15,20 @@ for d in hypr waybar kitty rofi swaync; do
 done
 
 log "Copiando scripts a ~/.local/bin"
-cp -f "$REPO_DIR"/dotfiles/local-bin/*.sh ~/.local/bin/
-chmod +x ~/.local/bin/*.sh
+cp -f "$REPO_DIR"/dotfiles/local-bin/*.sh "$REPO_DIR"/dotfiles/local-bin/*.py ~/.local/bin/
+chmod +x ~/.local/bin/*.sh ~/.local/bin/*.py
+
+log "Almanaque (popup del reloj de waybar)"
+mkdir -p ~/.config/almanaque ~/.config/systemd/user
+cp -f "$REPO_DIR/dotfiles/almanaque/style.css" ~/.config/almanaque/
+# calendars.conf lleva URLs secretas de Google: nunca se pisa ni viaja en el repo.
+if [[ ! -f ~/.config/almanaque/calendars.conf ]]; then
+    cp "$REPO_DIR/dotfiles/almanaque/calendars.conf.example" ~/.config/almanaque/calendars.conf
+    chmod 600 ~/.config/almanaque/calendars.conf
+fi
+cp -f "$REPO_DIR"/dotfiles/systemd-user/almanaque-sync.{service,timer} ~/.config/systemd/user/
+systemctl --user daemon-reload
+systemctl --user enable --now almanaque-sync.timer
 
 log "Copiando .zshrc"
 cp -f "$REPO_DIR/dotfiles/zshrc" ~/.zshrc

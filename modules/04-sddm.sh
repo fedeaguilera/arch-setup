@@ -44,5 +44,18 @@ sudo tee /etc/sddm.conf.d/theme.conf > /dev/null <<'EOF'
 Current=sddm-astronaut-theme
 EOF
 
+# El tema avisa "login failed" pero con WarningColor gris oscuro (invisible
+# sobre el fondo). El .user pisa al .conf del tema y no es del paquete, asi
+# que sobrevive a las actualizaciones.
+THEME_DIR=/usr/share/sddm/themes/sddm-astronaut-theme
+THEME_CONF=$(grep -oP '^ConfigFile=\K.*' "$THEME_DIR/metadata.desktop")
+log "Haciendo visible el aviso de contraseña incorrecta en SDDM"
+sudo tee "$THEME_DIR/$THEME_CONF.user" > /dev/null <<'EOF'
+[General]
+WarningColor="#ff5555"
+TranslateLoginFailedWarning="Usuario o contraseña incorrectos"
+TranslateCapslockWarning="Bloq Mayús activado"
+EOF
+
 mark_done "04-sddm"
 ok "04-sddm listo"

@@ -18,6 +18,12 @@ if ! grep -q "^ParallelDownloads" /etc/pacman.conf; then
     sudo sed -i '/^Color/a ParallelDownloads = 5' /etc/pacman.conf
 fi
 
+log "Generando locale es_AR.UTF-8 (fecha de waybar en español; el sistema sigue en en_US)"
+if ! locale -a | grep -qi '^es_AR\.utf8$'; then
+    sudo sed -i 's/^#es_AR.UTF-8 UTF-8/es_AR.UTF-8 UTF-8/' /etc/locale.gen
+    sudo locale-gen
+fi
+
 log "Sincronizando repos"
 sudo pacman -Sy
 

@@ -52,6 +52,7 @@
 
     "clock": {
         "format": "{:%H:%M   %a %d %b}",
+        "locale": "es_AR.UTF-8",
         "tooltip-format": "Clic: almanaque",
         "on-click": "~/.local/bin/almanaque-toggle.sh"
     },

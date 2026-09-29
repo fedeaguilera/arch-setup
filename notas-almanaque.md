@@ -54,6 +54,12 @@ alerta que cae antes de eso se pierde.
 - `~/.local/bin/almanaque.py` — el popup (Python + GTK4 + gtk4-layer-shell).
   Es una capa *overlay* transparente a pantalla completa con la tarjeta
   arriba al centro; por eso cualquier clic afuera lo cierra.
+- Queda **residente y oculto** (`exec-once = ~/.local/bin/almanaque.py
+  --daemon` en `hyprland.conf`). El reloj llama a `almanaque-toggle.sh`, que
+  le pide mostrarse/ocultarse por D-Bus → abre en ~0,1 s. Si el residente no
+  está corriendo, el toggle lo arranca (ese primer clic tarda ~1 s).
+  Tras editar `style.css` o actualizar el script:
+  `pkill -f 'almanaque.py --daemon'` y el próximo clic lo relanza.
 - `~/.local/bin/almanaque-sync.py` — baja los `.ics` a `~/.cache/almanaque/`.
   Lo corre `almanaque-sync.timer` (systemd de usuario) cada 15 min, y el
   popup mismo si el cache tiene más de 15 min.

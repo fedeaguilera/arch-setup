@@ -53,7 +53,7 @@
     "clock": {
         "format": "{:%H:%M   %a %d %b}",
         "tooltip-format": "Clic: almanaque",
-        "on-click": "~/.local/bin/almanaque.py"
+        "on-click": "~/.local/bin/almanaque-toggle.sh"
     },
 
     "network": {

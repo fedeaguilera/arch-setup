@@ -2,6 +2,8 @@
 """Almanaque: popup de calendario para el reloj de Waybar (estilo Windows).
 
 Clic en el reloj -> abre. Esc, clic afuera o clic en el reloj -> cierra.
+Queda residente y oculto (`almanaque.py --daemon` en hyprland.conf); el reloj
+llama a almanaque-toggle.sh, que lo muestra/oculta por D-Bus al instante.
 Eventos: ~/.config/almanaque/calendars.conf (URLs .ics de Google Calendar),
 cacheados por almanaque-sync.py en ~/.cache/almanaque/.
 """
@@ -101,9 +103,20 @@ class Store:
         self.calendars: list[Calendar] = []
         self.configured = 0
         self.status = ""
+        self.loaded_sig = None
         self.reload()
 
+    @staticmethod
+    def signature():
+        """Cambia cuando cambia el conf o algun .ics (el sync los reescribe)."""
+        files = [CONF, *sorted(CACHE.glob("*.ics"))]
+        return tuple((f.name, f.stat().st_mtime) for f in files if f.exists())
+
+    def changed(self) -> bool:
+        return self.signature() != self.loaded_sig
+
     def reload(self):
+        self.loaded_sig = self.signature()
         self.calendars = []
         cp = configparser.ConfigParser(interpolation=None)
         if CONF.exists():
@@ -217,17 +230,49 @@ class Almanaque(Gtk.Application):
         self._scroll_acc = 0.0
 
     # ── Arranque ────────────────────────────────────────────────────────
+    # Queda residente (arranca oculto con --daemon desde hyprland.conf). El clic
+    # en el reloj (almanaque-toggle.sh) le manda Activate por D-Bus -> mostrar u
+    # ocultar al instante, sin arrancar Python ni releer los .ics cada vez.
     def do_activate(self):
-        if self.win is not None:  # segundo clic en el reloj -> toggle
-            self.quit()
-            return
-        self._load_css()
-        self.store = Store()
-        self.win = self._build_window()
+        if self.win is None:
+            self.hold()  # no salir al ocultar la ventana
+            self._load_css()
+            self.store = Store()
+            self.win = self._build_window()
+            GLib.timeout_add_seconds(60, self._reload_if_changed)
+            if "--daemon" in sys.argv:
+                self._refresh()
+                return
+        if self.win.get_visible():
+            self._hide()
+        else:
+            self._show()
+
+    def _show(self):
+        # Al abrir, como en Windows: siempre arranca en hoy.
+        self.today = date.today()
+        self.selected = self.today
+        self.month = self.today.replace(day=1)
+        self.header_weekday.set_label(DIAS[self.today.weekday()])
+        self.header_date.set_label(
+            f"{self.today.day} de {MESES[self.today.month - 1]} de {self.today.year}")
+        if self.store.changed():
+            self.store.reload()
         self._refresh()
-        self.win.present()
+        self.win.set_visible(True)
         if self.store.needs_sync():
             self._start_sync()
+
+    def _hide(self):
+        self.win.set_visible(False)
+
+    def _reload_if_changed(self):
+        # Mientras esta oculto, precarga lo que trajo el timer de sync para que
+        # abrir no tenga que parsear nada.
+        if not self.win.get_visible() and self.store.changed():
+            self.store.reload()
+            self._refresh()
+        return True
 
     def _load_css(self):
         provider = Gtk.CssProvider()
@@ -258,13 +303,14 @@ class Almanaque(Gtk.Application):
         win.set_child(self.card)
 
         # Cabecera con el dia de hoy.
-        wd = Gtk.Label(label=DIAS[self.today.weekday()], xalign=0)
-        wd.add_css_class("today-weekday")
-        dt = Gtk.Label(xalign=0, label=f"{self.today.day} de {MESES[self.today.month - 1]}"
-                                         f" de {self.today.year}")
-        dt.add_css_class("today-date")
-        self.card.append(wd)
-        self.card.append(dt)
+        self.header_weekday = Gtk.Label(label=DIAS[self.today.weekday()], xalign=0)
+        self.header_weekday.add_css_class("today-weekday")
+        self.header_date = Gtk.Label(
+            xalign=0, label=f"{self.today.day} de {MESES[self.today.month - 1]}"
+                            f" de {self.today.year}")
+        self.header_date.add_css_class("today-date")
+        self.card.append(self.header_weekday)
+        self.card.append(self.header_date)
 
         # Navegacion: ‹ Mes Año ›   [Hoy]
         nav = Gtk.Box(spacing=4)
@@ -318,11 +364,11 @@ class Almanaque(Gtk.Application):
             if w is self.card:
                 return
             w = w.get_parent()
-        self.quit()
+        self._hide()
 
     def _on_key(self, _ctrl, keyval, _code, _state):
         if keyval == Gdk.KEY_Escape:
-            self.quit()
+            self._hide()
         elif keyval in (Gdk.KEY_Left, Gdk.KEY_Page_Up):
             self._shift_month(-1)
         elif keyval in (Gdk.KEY_Right, Gdk.KEY_Page_Down):

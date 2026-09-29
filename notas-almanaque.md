@@ -28,6 +28,27 @@ sección con otro nombre y `color`.
 > `calendars.conf` queda con permisos `600` y **no** se sube a este repo. Si
 > se filtra, en la misma pantalla de Google está **Restablecer**.
 
+## Notificaciones (alertas de eventos)
+
+`almanaque-alertas.service` corre en segundo plano y manda la notificación
+(swaync) cuando toca:
+
+- **Alertas propias del evento** ("30 min antes", "el día a las 9:00"…):
+  siempre llegan.
+- **Recordatorio por defecto de Google**: *no* viene en el feed iCal (Google
+  solo exporta las alertas puestas a mano en cada evento). Para suplirlo,
+  `aviso = N` en la sección del calendario → aviso N minutos antes de cada
+  evento con hora que no tenga alerta propia. Sin `aviso`, solo las propias.
+- Si la compu estaba suspendida, al despertar avisa lo que se perdió en los
+  últimos 15 min; lo más viejo se descarta para no spamear.
+- Nunca repite un aviso (estado en `~/.cache/almanaque/alertas.json`).
+
+Ver qué va a sonar en los próximos 7 días:
+`~/.local/bin/almanaque-alertas.py --proximas`
+
+Ojo: un evento nuevo tarda hasta 15 min en llegar (lo que tarda el sync); una
+alerta que cae antes de eso se pierde.
+
 ## Cómo funciona
 
 - `~/.local/bin/almanaque.py` — el popup (Python + GTK4 + gtk4-layer-shell).
@@ -47,3 +68,5 @@ sección con otro nombre y `color`.
 - **No aparecen eventos** → `~/.local/bin/almanaque-sync.py` y mirá el error
   (URL mal pegada = "la respuesta no es un .ics").
 - **Estado del timer** → `systemctl --user list-timers almanaque-sync.timer`.
+- **No llegan notificaciones** → `systemctl --user status almanaque-alertas`
+  y `journalctl --user -u almanaque-alertas -n 30`.

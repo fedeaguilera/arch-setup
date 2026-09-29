@@ -1,0 +1,11 @@
+[Unit]
+Description=Almanaque: notificaciones de eventos del calendario
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/python3 %h/.local/bin/almanaque-alertas.py
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=default.target

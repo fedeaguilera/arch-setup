@@ -26,9 +26,9 @@ if [[ ! -f ~/.config/almanaque/calendars.conf ]]; then
     cp "$REPO_DIR/dotfiles/almanaque/calendars.conf.example" ~/.config/almanaque/calendars.conf
     chmod 600 ~/.config/almanaque/calendars.conf
 fi
-cp -f "$REPO_DIR"/dotfiles/systemd-user/almanaque-sync.{service,timer} ~/.config/systemd/user/
+cp -f "$REPO_DIR"/dotfiles/systemd-user/almanaque-{sync.service,sync.timer,alertas.service} ~/.config/systemd/user/
 systemctl --user daemon-reload
-systemctl --user enable --now almanaque-sync.timer
+systemctl --user enable --now almanaque-sync.timer almanaque-alertas.service
 
 log "Copiando .zshrc"
 cp -f "$REPO_DIR/dotfiles/zshrc" ~/.zshrc

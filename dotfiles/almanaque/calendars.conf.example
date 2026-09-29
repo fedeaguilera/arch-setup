@@ -6,6 +6,11 @@
 #             (paleta Catppuccin Mocha)
 #   enabled = false  para apagarlo sin borrarlo
 #   holidays = true  pinta el numero del dia (para calendarios de feriados)
+#   aviso   = 10     notificacion N minutos antes de cada evento con hora que
+#                    no tenga alerta propia. Hace falta porque Google NO
+#                    exporta el recordatorio por defecto del calendario, solo
+#                    las alertas que pusiste a mano en cada evento (esas
+#                    llegan siempre, con o sin "aviso").
 #
 # ── Como agregar tu Google Calendar (Gmail) ──────────────────────────────
 #  1. Abri https://calendar.google.com en el navegador.
@@ -27,6 +32,7 @@
 # [Gmail]
 # url = PEGAR_ACA_LA_DIRECCION_SECRETA_ICAL
 # color = mauve
+# aviso = 10
 
 [Feriados]
 url = https://calendar.google.com/calendar/ical/es.ar%23holiday%40group.v.calendar.google.com/public/basic.ics

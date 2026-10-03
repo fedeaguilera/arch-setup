@@ -30,6 +30,9 @@ cp -f "$REPO_DIR"/dotfiles/systemd-user/almanaque-{sync.service,sync.timer,alert
 systemctl --user daemon-reload
 systemctl --user enable --now almanaque-sync.timer almanaque-alertas.service
 
+# Carpetas en Nautilus: por defecto ganaba kitty-open y "abrir descarga" en Firefox abria una terminal
+xdg-mime default org.gnome.Nautilus.desktop inode/directory
+
 log "Copiando .zshrc"
 cp -f "$REPO_DIR/dotfiles/zshrc" ~/.zshrc
 

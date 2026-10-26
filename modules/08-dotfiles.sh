@@ -26,9 +26,11 @@ if [[ ! -f ~/.config/almanaque/calendars.conf ]]; then
     cp "$REPO_DIR/dotfiles/almanaque/calendars.conf.example" ~/.config/almanaque/calendars.conf
     chmod 600 ~/.config/almanaque/calendars.conf
 fi
-cp -f "$REPO_DIR"/dotfiles/systemd-user/almanaque-{sync.service,sync.timer,alertas.service} ~/.config/systemd/user/
+mkdir -p ~/.local/share/sounds/usb
+cp -f "$REPO_DIR"/dotfiles/sounds/usb-*.oga ~/.local/share/sounds/usb/
+cp -f "$REPO_DIR"/dotfiles/systemd-user/almanaque-{sync.service,sync.timer,alertas.service} "$REPO_DIR"/dotfiles/systemd-user/usb-sound.service ~/.config/systemd/user/
 systemctl --user daemon-reload
-systemctl --user enable --now almanaque-sync.timer almanaque-alertas.service
+systemctl --user enable --now almanaque-sync.timer almanaque-alertas.service usb-sound.service
 
 # Carpetas en Nautilus: por defecto ganaba kitty-open y "abrir descarga" en Firefox abria una terminal
 xdg-mime default org.gnome.Nautilus.desktop inode/directory

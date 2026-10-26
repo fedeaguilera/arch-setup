@@ -1,0 +1,11 @@
+[Unit]
+Description=Sonido al conectar/desconectar dispositivos USB
+After=pipewire.service
+
+[Service]
+ExecStart=%h/.local/bin/usb-sound.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

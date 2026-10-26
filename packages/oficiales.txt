@@ -8,7 +8,9 @@ amd-ucode
 base
 base-devel
 btrfs-progs
+dosfstools
 efibootmgr
+exfatprogs
 fastfetch
 git
 grub

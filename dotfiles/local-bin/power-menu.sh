@@ -53,7 +53,7 @@ write_hypridle() {
         echo "general {"
         echo "    lock_cmd = pidof hyprlock || hyprlock"
         echo "    before_sleep_cmd = loginctl lock-session"
-        echo "    after_sleep_cmd = hyprctl dispatch dpms on"
+        echo "    after_sleep_cmd = hyprctl dispatch 'hl.dsp.dpms({ action = \"enable\" })'"
         echo "}"
         if [ "$profile" != "presentacion" ]; then
             local b l s p
@@ -77,8 +77,8 @@ listener {
 
 listener {
     timeout = $((s * 60))
-    on-timeout = hyprctl dispatch dpms off
-    on-resume = hyprctl dispatch dpms on
+    on-timeout = hyprctl dispatch 'hl.dsp.dpms({ action = "disable" })'
+    on-resume = hyprctl dispatch 'hl.dsp.dpms({ action = "enable" })'
 }
 
 listener {

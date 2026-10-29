@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Thunderbird, tema Catppuccin Mocha Mauve, autostart en workspace 3 (esto
-# ultimo ya viene con dotfiles/hypr/hyprland.conf via 08-dotfiles.sh).
+# ultimo ya viene con dotfiles/hypr/hyprland.lua via 08-dotfiles.sh).
 #
 # El tema (.xpi) no se puede instalar de forma confiable por linea de
 # comandos: Thunderbird lo instala via su Add-ons Manager, y sortear eso

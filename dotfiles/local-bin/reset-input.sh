@@ -9,14 +9,14 @@ names=$(hyprctl devices -j | jq -r '.mice[].name')
 
 while IFS= read -r name; do
   [ -z "$name" ] && continue
-  hyprctl keyword "device[$name]:enabled" false >/dev/null
+  hyprctl dispatch "function() hl.device({ name = \"$name\", enabled = false }) end" >/dev/null
 done <<< "$names"
 
 sleep 0.3
 
 while IFS= read -r name; do
   [ -z "$name" ] && continue
-  hyprctl keyword "device[$name]:enabled" true >/dev/null
+  hyprctl dispatch "function() hl.device({ name = \"$name\", enabled = true }) end" >/dev/null
 done <<< "$names"
 
 notify-send "Input reset" "Mouse/touchpad devices re-initialized" 2>/dev/null

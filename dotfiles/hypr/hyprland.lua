@@ -135,7 +135,7 @@ bind(mod .. " + CTRL + down",  hl.dsp.window.resize({ x = 0,   y = 40,  relative
 
 bind(mod .. " + SHIFT + S", hl.dsp.window.swap({ next = true }), "Intercambiar con la siguiente")
 
-for i = 1, 5 do
+for i = 1, 6 do
     bind(mod .. " + " .. i,         hl.dsp.focus({ workspace = i }), "Ir al workspace " .. i)
     -- SHIFT (silent): mueve la ventana pero no te sigue al workspace nuevo
     bind(mod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i, follow = false }), "Mandar ventana al workspace " .. i)

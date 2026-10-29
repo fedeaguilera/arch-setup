@@ -124,6 +124,8 @@ freerdp
 gvfs-afc               # iPhone en Nautilus (archivos)
 gvfs-gphoto2           # iPhone en Nautilus (fotos)
 iwd
+libheif                # HEIC/HEIF (fotos del iPhone) para loupe
+loupe                  # visor de imagenes (abre HEIC del iPhone via libheif)
 nautilus
 network-manager-applet
 networkmanager

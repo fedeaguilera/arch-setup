@@ -34,6 +34,10 @@ systemctl --user enable --now almanaque-sync.timer almanaque-alertas.service usb
 
 # Carpetas en Nautilus: por defecto ganaba kitty-open y "abrir descarga" en Firefox abria una terminal
 xdg-mime default org.gnome.Nautilus.desktop inode/directory
+# Imagenes con Loupe (uno por tipo: xdg-mime con varios tipos juntos escribe una linea invalida)
+for t in $(grep '^MimeType=' /usr/share/applications/org.gnome.Loupe.desktop | cut -d= -f2 | tr ';' ' '); do
+    xdg-mime default org.gnome.Loupe.desktop "$t"
+done
 
 log "Copiando .zshrc"
 cp -f "$REPO_DIR/dotfiles/zshrc" ~/.zshrc

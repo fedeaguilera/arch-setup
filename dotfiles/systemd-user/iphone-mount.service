@@ -1,0 +1,10 @@
+[Unit]
+Description=Montar el almacenamiento del iPhone (fotos) al enchufarlo
+
+[Service]
+ExecStart=%h/.local/bin/iphone-mount.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

@@ -67,6 +67,7 @@ tooltip label {
 #pulseaudio,
 #cpu,
 #memory,
+#custom-gpu,
 #temperature,
 #battery,
 #tray,
@@ -154,6 +155,16 @@ window#waybar.empty #window {
 /* RAM */
 #memory {
     color: @mauve;
+}
+
+/* GPU: verde con la AMD; resaltado cuando la NVIDIA esta despierta */
+#custom-gpu {
+    color: @green;
+}
+
+#custom-gpu.dgpu {
+    color: @base;
+    background-color: @green;
 }
 
 /* Temperatura */

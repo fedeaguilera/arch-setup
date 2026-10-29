@@ -20,6 +20,7 @@
         "pulseaudio",
         "cpu",
         "memory",
+        "custom/gpu",
         "temperature",
         "battery",
         "tray",
@@ -92,6 +93,12 @@
         "format": "  {percentage}%",
         "interval": 2,
         "tooltip-format": "{used:0.1f}GiB / {total:0.1f}GiB"
+    },
+
+    "custom/gpu": {
+        "exec": "~/.local/bin/waybar-gpu.py",
+        "return-type": "json",
+        "interval": 2
     },
 
     "temperature": {

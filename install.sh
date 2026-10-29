@@ -106,7 +106,9 @@ cat <<'EOF'
   - ProtonUp-Qt: instalar GE-Proton a mano (Steam → Configuracion
     → Compatibilidad).
   - Restaurar ~/vpn/ (certificados, .ovpn) — a proposito NO viaja
-    en este repo, revisa el .gitignore.
+    en este repo, revisa el .gitignore. Despues de importar la VPN
+    en NetworkManager, aplicar el split tunnel de ~/vpn/NOTAS-split-tunnel.md
+    (si no, NM manda todo internet por la VPN y se corta la conexion).
   - Revisar fuentes/lenguaje de teclado si difieren del layout
     usado durante el desarrollo de este repo.
   - Ver notas-gaming.md (en este repo) para las opciones de

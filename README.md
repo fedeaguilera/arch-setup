@@ -127,6 +127,8 @@ alcanza para que el módulo correspondiente la instale.
 - Probar `systemctl suspend` / `hibernate` / `suspend-then-hibernate`.
 - Proton-GE vía ProtonUp-Qt (Steam → Configuración → Compatibilidad).
 - Restaurar `~/vpn/` — a propósito no viaja en este repo (ver `.gitignore`).
+  Después de importar la VPN, aplicar el split tunnel de `~/vpn/NOTAS-split-tunnel.md`
+  (si no, NetworkManager manda todo internet por la VPN y se corta la conexión).
 - `notas-gaming.md` para las opciones de lanzamiento por juego/launcher.
 - `notas-almanaque.md` para conectar tu Google Calendar al popup del reloj.
 - `notas-neovim.md` para arrancar con LazyVim viniendo de VS Code.

@@ -121,6 +121,8 @@ bluez-utils
 discord
 firefox
 freerdp
+gvfs-afc               # iPhone en Nautilus (archivos)
+gvfs-gphoto2           # iPhone en Nautilus (fotos)
 iwd
 nautilus
 network-manager-applet
@@ -131,5 +133,6 @@ power-profiles-daemon
 remmina
 rtkit
 thunderbird
+usbmuxd                # comunicacion USB con el iPhone
 wireless_tools
 wpa_supplicant

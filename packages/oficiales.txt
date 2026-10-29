@@ -116,6 +116,7 @@ yazi
 # --- apps ---
 # aplicaciones de usuario + red/bluetooth
 blueman
+celluloid              # reproductor de video (mpv; HEVC del iPhone por VA-API en la AMD)
 bluez
 bluez-utils
 discord

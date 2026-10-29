@@ -8,7 +8,7 @@ if is_done "08-dotfiles"; then log "08-dotfiles: ya hecho, salteo"; exit 0; fi
 
 mkdir -p ~/.config ~/.local/bin
 
-for d in hypr waybar kitty rofi swaync; do
+for d in hypr waybar kitty rofi swaync mpv; do
     log "Copiando dotfiles/$d -> ~/.config/$d"
     mkdir -p ~/.config/"$d"
     cp -rf "$REPO_DIR/dotfiles/$d/." ~/.config/"$d"/
@@ -38,6 +38,16 @@ xdg-mime default org.gnome.Nautilus.desktop inode/directory
 for t in $(grep '^MimeType=' /usr/share/applications/org.gnome.Loupe.desktop | cut -d= -f2 | tr ';' ' '); do
     xdg-mime default org.gnome.Loupe.desktop "$t"
 done
+# Videos con Celluloid, leyendo ~/.config/mpv/mpv.conf (decodifica en la AMD)
+for t in $(grep '^MimeType=' /usr/share/applications/io.github.celluloid_player.Celluloid.desktop | cut -d= -f2 | tr ';' '\n' | grep '^video/'); do
+    xdg-mime default io.github.celluloid_player.Celluloid.desktop "$t"
+done
+gsettings set io.github.celluloid-player.Celluloid mpv-config-enable true
+gsettings set io.github.celluloid-player.Celluloid mpv-config-file "file://$HOME/.config/mpv/mpv.conf"
+# Loupe/Celluloid se abren por D-Bus: estos overrides fuerzan GL/Vulkan de la AMD
+# para que abrir una foto o un video no despierte la NVIDIA
+mkdir -p ~/.local/share/dbus-1/services
+cp -f "$REPO_DIR"/dotfiles/dbus-services/*.service ~/.local/share/dbus-1/services/
 
 log "Copiando .zshrc"
 cp -f "$REPO_DIR/dotfiles/zshrc" ~/.zshrc

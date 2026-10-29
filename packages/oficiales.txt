@@ -121,6 +121,7 @@ bluez
 bluez-utils
 discord
 firefox
+hunspell-es_ar         # diccionario español (Argentina) para Firefox/Thunderbird
 freerdp
 gvfs-afc               # iPhone en Nautilus (archivos)
 gvfs-gphoto2           # iPhone en Nautilus (fotos)

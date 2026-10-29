@@ -87,7 +87,7 @@ hl.config({
 })
 
 hl.window_rule({ match = { class = "^(kitty)$" }, opacity = "0.85 0.85" })
-hl.window_rule({ match = { class = [[^(org\.mozilla\.Thunderbird)$]] }, workspace = "3 silent" })
+hl.window_rule({ match = { class = [[^(org\.mozilla\.Thunderbird)$]] }, workspace = "4 silent" })
 
 -- Almanaque (popup del reloj de waybar): blur solo detras de la tarjeta.
 hl.layer_rule({ match = { namespace = "^(almanaque)$" }, blur = true, ignore_alpha = 0.3 })
